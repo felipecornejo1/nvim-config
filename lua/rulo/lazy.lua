@@ -12,5 +12,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup('rulo.plugins')
+require("lazy").setup({
+	{import = 'rulo.plugins'},
+	{import = 'rulo.plugins.lsp'},
+}, {
+	install = {
+		colorscheme = { 'nightfly' },
+	},
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		notify = false,
+	},
+})
 
