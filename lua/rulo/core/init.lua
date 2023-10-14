@@ -1,1 +1,1 @@
-require('rulo.core.remap')
+require("rulo.core.remap")
