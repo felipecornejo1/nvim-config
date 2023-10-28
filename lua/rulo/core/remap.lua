@@ -13,3 +13,5 @@ keymap.set({ "n", "v" }, "<C-d>", "zz<C-d>zz")
 keymap.set({ "n", "v" }, "<C-u>", "zz<C-u>zz")
 
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+
+keymap.set("i", "jk", "<Esc>", { noremap = true })
