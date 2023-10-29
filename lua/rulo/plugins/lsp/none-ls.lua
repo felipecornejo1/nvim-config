@@ -29,6 +29,14 @@ return {
 		-- to setup format on save
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+		local code_actions = require("lvim.lsp.null-ls.code_actions")
+		code_actions.setup({
+			{
+				exe = "eslint_d",
+				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+			},
+		})
+
 		-- configure null_ls
 		null_ls.setup({
 			-- add package.json as identifier for root (for typescript monorepos)
