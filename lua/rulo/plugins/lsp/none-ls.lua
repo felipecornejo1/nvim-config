@@ -16,6 +16,7 @@ return {
 			ensure_installed = {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
+				"golines",
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
@@ -33,7 +34,17 @@ return {
 		code_actions.setup({
 			{
 				exe = "eslint_d",
-				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+				filetypes = {
+					"typescript",
+					"typescriptreact",
+					"javascript",
+					"javascriptreact",
+					"vue",
+					"go",
+					"gomod",
+					"gowork",
+					"gotmpl",
+				},
 			},
 		})
 
@@ -51,6 +62,9 @@ return {
 				formatting.stylua, -- lua formatter
 				formatting.isort,
 				formatting.black,
+				formatting.gofumpt,
+				formatting.goimports_reviser,
+				formatting.golines,
 				diagnostics.pylint,
 				diagnostics.eslint_d.with({ -- js/ts linter
 					condition = function(utils)
@@ -66,13 +80,7 @@ return {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format({
-								filter = function(client)
-									--  only use null-ls for formatting instead of lsp server
-									return client.name == "null-ls"
-								end,
-								bufnr = bufnr,
-							})
+							vim.lsp.buf.format({ bufnr = bufnr })
 						end,
 					})
 				end
