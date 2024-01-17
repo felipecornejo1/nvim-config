@@ -123,6 +123,20 @@ return {
 			},
 		})
 
+		lspconfig["clangd"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--completion-style=bundled",
+				"--header-insertion=never",
+			},
+			filetypes = { "c", "cpp", "objc", "objcpp" },
+			root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+		})
+
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
