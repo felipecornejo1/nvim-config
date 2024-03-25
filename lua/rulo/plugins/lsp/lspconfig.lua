@@ -105,7 +105,19 @@ return {
 		lspconfig["emmet_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+			filetypes = {
+				"html",
+				"typescriptreact",
+				"javascriptreact",
+				"typescript",
+				"typescript.tsx",
+				"javascript.jsx",
+				"css",
+				"sass",
+				"scss",
+				"less",
+				"svelte",
+			},
 		})
 
 		lspconfig["gopls"].setup({
